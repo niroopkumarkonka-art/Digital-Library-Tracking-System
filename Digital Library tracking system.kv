@@ -1,0 +1,141 @@
+<LibraryLayout>:
+    orientation: "vertical"
+    padding: 20
+    spacing: 15
+
+    Label:
+        text: "Digital Library Tracker"
+        font_size: 28
+        bold: True
+        size_hint_y: 0.1
+        color: 0.2, 0.6, 1, 1
+
+    # Login Section
+    BoxLayout:
+        orientation: "horizontal"
+        spacing: 10
+        size_hint_y: 0.1
+        
+        Label:
+            text: "Username:"
+            size_hint_x: 0.2
+        TextInput:
+            id: username
+            hint_text: "Admin Username"
+            size_hint_x: 0.3
+        Label:
+            text: "Password:"
+            size_hint_x: 0.2
+        TextInput:
+            id: password
+            hint_text: "Admin Password"
+            password: True
+            size_hint_x: 0.3
+        Button:
+            text: "Login"
+            size_hint_x: 0.2
+            on_press: root.do_login()
+
+    Label:
+        id: login_status
+        text: "Please login"
+        size_hint_y: 0.05
+        color: 1, 0, 0, 1
+
+    # Input Section
+    GridLayout:
+        cols: 2
+        spacing: 10
+        size_hint_y: 0.3
+        
+        TextInput:
+            id: book_id_input
+            hint_text: "Book ID (e.g., B101)"
+            multiline: False
+        
+        TextInput:
+            id: member_id_input
+            hint_text: "Member ID (e.g., M001)"
+            multiline: False
+
+        TextInput:
+            id: title_input
+            hint_text: "Book Title (For Adding)"
+            multiline: False
+
+        TextInput:
+            id: author_input
+            hint_text: "Author (For Adding)"
+            multiline: False
+
+    # Member Input Section
+    GridLayout:
+        cols: 2
+        spacing: 10
+        size_hint_y: 0.2
+        
+        TextInput:
+            id: member_id_input2
+            hint_text: "Member ID (e.g., M001)"
+            multiline: False
+        
+        TextInput:
+            id: member_name_input
+            hint_text: "Member Name"
+            multiline: False
+
+        TextInput:
+            id: member_email_input
+            hint_text: "Member Email"
+            multiline: False
+
+    # Action Buttons
+    BoxLayout:
+        orientation: "horizontal"
+        spacing: 10
+        size_hint_y: 0.15
+
+        Button:
+            text: "Add Book"
+            background_color: 0.3, 0.7, 0.3, 1
+            on_press: root.do_add_book()
+
+        Button:
+            text: "Add Member"
+            background_color: 0.3, 0.7, 0.3, 1
+            on_press: root.do_add_member()
+
+        Button:
+            text: "Borrow"
+            background_color: 0.3, 0.3, 0.9, 1
+            on_press: root.do_borrow_book()
+
+        Button:
+            text: "Return"
+            background_color: 0.9, 0.5, 0.2, 1
+            on_press: root.do_return_book()
+
+    Button:
+        text: "Show All Books"
+        size_hint_y: 0.1
+        on_press: root.show_all_books()
+
+    Button:
+        text: "Show All Members"
+        size_hint_y: 0.1
+        on_press: root.show_all_members()
+
+    # Status/Result Output
+    Label:
+        id: status_label
+        text: "System Ready..."
+        text_size: self.width, None
+        size_hint_y: 0.25
+        halign: "center"
+        valign: "middle"
+        canvas.before:
+            Color:
+                rgba: 0.2, 0.2, 0.2, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
